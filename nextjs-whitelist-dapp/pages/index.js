@@ -110,7 +110,7 @@ export default function Home() {
       if (joinedWhitelist) {
         return (
           <div className={styles.description}>
-            Thanks for joining the Whitelist!
+            <strong>Thanks for Joined!</strong>
           </div>
         );
       } else if (loading) {
@@ -152,7 +152,8 @@ export default function Home() {
             It&apos;s an NFT collection for developers in Crypto.
           </div>
           <div className={styles.description}>
-            {numberOfWhitelisted} have already joined the Whitelist
+            <strong>{numberOfWhitelisted}</strong> have already joined the
+            Whitelist.
           </div>
           {renderButton()}
         </div>
