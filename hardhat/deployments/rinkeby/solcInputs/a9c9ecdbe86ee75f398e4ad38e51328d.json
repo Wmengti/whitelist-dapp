@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/WhiteList.sol": {
+      "content": "//SPDX-License-Identifier:MIT\npragma solidity ^0.8.0;\n\ncontract WhiteList {\n    uint8 public maxWhitelistedAddresses;\n    uint8 public numAddressesWhitelisted;\n    mapping(address => bool) public whitelistedAddresses;\n\n    constructor(uint8 _maxWhitelistedAddresses) {\n        maxWhitelistedAddresses = _maxWhitelistedAddresses;\n    }\n\n    function addAddressToWhitelist() public {\n        require(\n            !whitelistedAddresses[msg.sender],\n            \"Sender has already been whitelisted\"\n        );\n        require(\n            numAddressesWhitelisted < maxWhitelistedAddresses,\n            \"More addresses can't be added,limit reached\"\n        );\n        whitelistedAddresses[msg.sender] = true;\n        numAddressesWhitelisted += 1;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
